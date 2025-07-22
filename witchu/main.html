@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
+  <title>For You, Saachi 💝</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffe6f0;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .heart-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .right-panel {
+      width: 100vw;
+      min-height: 100vh;
+      background: linear-gradient(to bottom right, #fff0f5, #ffccdd);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .greeting {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      color: #d1007d;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .custom-message {
+      font-size: 18px;
+      color: #b30059;
+      font-style: italic;
+      margin-bottom: 25px;
+      text-align: center;
+      max-width: 600px;
+      line-height: 1.6;
+      animation: fadeInTypewriter 4s steps(60) 1 forwards;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #b30059;
+    }
+
+    @keyframes fadeInTypewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    #card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      width: 180px;
+      height: 240px;
+      perspective: 1000px;
+      position: relative;
+      animation: bounceCard 0.6s ease-in-out;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      outline: 0.8px solid rgba(255, 192, 203, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    @keyframes bounceCard {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.1); }
+      60% { transform: scale(0.97); }
+      100% { transform: scale(1); }
+    }
+
+    .card::after {
+      content: attr(data-label);
+      position: absolute;
+      top: -25px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      color: #c2185b;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.4);
+    }
+
+    .card-front {
+      background: #ffc1e3;
+    }
+
+    .card-front img,
+    .card-front video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 0.5s ease;
+    }
+
+    .card-front img:active,
+    .card-front video:active {
+      transform: scale(1.5);
+    }
+
+    .card-back {
+      background: #fff0f5;
+      color: #d1007d;
+      transform: rotateY(180deg);
+    }
+
+    .tap-note {
+      position: relative;
+      background: #fff;
+      color: #c2185b;
+      font-size: 14px;
+      font-style: italic;
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin-left: 20px;
+      align-self: flex-start;
+      box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
+      animation: cloudFadeIn 2s ease forwards;
+    }
+
+    @keyframes cloudFadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff69b4;
+      transform: rotate(45deg);
+      animation: floatHeart linear forwards;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff69b4;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .next-btn {
+      margin-top: 40px;
+      background-color: #d1007d;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(209, 0, 125, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .next-btn:hover {
+      background-color: #b30059;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<audio id="bg-music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+
+<div class="heart-container" id="heart-container"></div>
+
+<div class="right-panel" id="right-panel">
+  <div class="greeting">Happy Birthday, Saachi! 💖</div>
+  <div class="custom-message">Every moment with you feels like magic. This little surprise is just a glimpse of how special you are to me. 💫</div>
+
+  <div id="card-wrapper">
+    <div class="tap-note">✨ Tap a card to see your secret message ✨</div>
+    <div class="row">
+      <div class="card" data-label="Photo 1">
+        <div class="card-inner">
+          <div class="card-front"><img src="p1.jpg" alt="Photo 1" /></div>
+          <div class="card-back">Your smile is my sunshine. 🌞</div>
+        </div>
+      </div>
+      <div class="card" data-label="Photo 2">
+        <div class="card-inner">
+          <div class="card-front"><img src="p2.jpg" alt="Photo 2" /></div>
+          <div class="card-back">Every day with you is a blessing. 💖</div>
+        </div>
+      </div>
+      <div class="card" data-label="Photo 3">
+        <div class="card-inner">
+          <div class="card-front"><img src="p3.jpg" alt="Photo 3" /></div>
+          <div class="card-back">You light up my world. ✨</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tap-note"></div>
+    <div class="row">
+      <div class="card" data-label="Video 1">
+        <div class="card-inner">
+          <div class="card-front">
+            <video src="v1.mp4" muted autoplay loop></video>
+          </div>
+          <div class="card-back">A memory I’ll always treasure. 🎥</div>
+        </div>
+      </div>
+      <div class="card" data-label="Video 2">
+        <div class="card-inner">
+          <div class="card-front">
+            <video src="v2.mp4" muted autoplay loop></video>
+          </div>
+          <div class="card-back">You + Me = Forever. 💞</div>
+        </div>
+      </div>
+      <div class="card" data-label="Video 3">
+        <div class="card-inner">
+          <div class="card-front">
+            <video src="v3.mp4" muted autoplay loop></video>
+          </div>
+          <div class="card-back">Just look at us glow. 🔥</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="next-btn" onclick="location.href='page3.html'">Next Surprise 🎁</button>
+</div>
+
+<script>
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = `${Math.random() * 100}%`;
+    heart.style.top = `${100 + Math.random() * 10}%`;
+    heart.style.animationDuration = `${3 + Math.random() * 2}s`;
+    document.getElementById('heart-container').appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+  }
+
+  setInterval(createHeart, 150);
+</script>
+
+</body>
+</html>
