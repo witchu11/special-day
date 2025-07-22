@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
+  <title>A Special Surprise for Saachi 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap" rel="stylesheet">
+
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* --- Login Page Styles --- */
+    #login-section {
+      background: linear-gradient(to right, #ffe6f0, #ffccdd);
+      color: #ff1493;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .login-box {
+      position: relative;
+      background: rgba(255, 255, 255, 0.5);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 0 25px #ff69b4;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      width: 320px;
+      z-index: 2;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      width: 90px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ff69b4;
+      margin: 0 auto 10px auto;
+      display: block;
+    }
+
+    .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 34px;
+      color: #ff1493;
+      margin: 5px 0;
+    }
+
+    .insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 10px 0 20px 0;
+      text-decoration: none;
+      color: #c71585;
+      font-size: 14px;
+      background: #ffe4f0;
+      padding: 6px 12px;
+      border-radius: 20px;
+      box-shadow: 0 0 8px #ffb6c1;
+      transition: background 0.3s;
+    }
+
+    .insta-link:hover {
+      background: #ffc0cb;
+    }
+
+    .insta-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+    }
+
+    #login-section form {
+      margin-top: 0;
+    }
+
+    #login-section input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      background: #ffe4ec;
+      color: #d1007d;
+      box-sizing: border-box;
+    }
+
+    #login-section input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #ff1493;
+    }
+
+    #login-section button {
+      padding: 12px 30px;
+      background: #ff69b4;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    #login-section button:hover {
+      background: #ff1493;
+    }
+
+    #countdown {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #c71585;
+    }
+    
+    .heart-container, .bubble-container {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .heart, .bubble {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: #ff69b4;
+      transform: rotate(45deg);
+      animation: floatHeart linear forwards;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff69b4;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+    }
+
+    .bubble {
+      width: 10px;
+      height: 10px;
+      background: #ffffff55;
+      border-radius: 50%;
+      animation: floatBubble linear forwards;
+    }
+
+    @keyframes floatBubble {
+      0% { transform: translateY(100vh); opacity: 0.8; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    /* --- Main Content Styles --- */
+    #main-section {
+      background: #ffe6f0;
+      display: none; /* Initially hidden */
+    }
+    
+    #main-section .heart-container {
+      position: fixed;
+    }
+    
+    #main-section .heart {
+        animation-name: floatMainHeart;
+    }
+
+    @keyframes floatMainHeart {
+       0% { transform: translateY(0) rotate(45deg); opacity: 0.8; }
+      100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+    }
+
+
+    .right-panel {
+      width: 100vw;
+      min-height: 100vh;
+      background: linear-gradient(to bottom right, #fff0f5, #ffccdd);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+    }
+
+    .greeting {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      color: #d1007d;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .custom-message {
+      font-size: 18px;
+      color: #b30059;
+      font-style: italic;
+      margin-bottom: 25px;
+      text-align: center;
+      max-width: 90%;
+      line-height: 1.6;
+      animation: fadeInTypewriter 4s steps(60) 1s forwards;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #b30059;
+      width: 0;
+    }
+
+    @keyframes fadeInTypewriter {
+      from { width: 0; }
+      to { width: 100%; border-right-color: transparent; }
+    }
+
+    #card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      width: 180px;
+      height: 240px;
+      perspective: 1000px;
+      position: relative;
+      animation: bounceCard 0.6s ease-in-out;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    @keyframes bounceCard {
+      0%, 100% { transform: scale(1); }
+      30% { transform: scale(1.05); }
+      60% { transform: scale(0.95); }
+    }
+
+    .card::after {
+      content: attr(data-label);
+      position: absolute;
+      top: -25px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      color: #c2185b;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.4);
+      box-sizing: border-box;
+    }
+
+    .card-front { background: #ffc1e3; }
+
+    .card-front img, .card-front video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    
+    .card-back {
+      background: #fff0f5;
+      color: #d1007d;
+      transform: rotateY(180deg);
+    }
+
+    .tap-note {
+      position: relative;
+      background: #fff;
+      color: #c2185b;
+      font-size: 14px;
+      font-style: italic;
+      padding: 10px 20px;
+      border-radius: 30px;
+      align-self: center;
+      box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
+      animation: cloudFadeIn 2s ease forwards;
+    }
+    
+    .tap-note:empty {
+        display: none;
+    }
+
+    @keyframes cloudFadeIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .next-btn {
+      margin-top: 40px;
+      background-color: #d1007d;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(209, 0, 125, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .next-btn:hover {
+      background-color: #b30059;
+      transform: scale(1.05);
+    }
+
+    /* --- Cat Game Styles --- */
+    #cat-game-section {
+      background: linear-gradient(to bottom right, #ffe4e1, #fff0f5);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      animation: backgroundAnim 10s ease infinite alternate;
+      min-height: 100vh;
+      display: none; /* Initially hidden */
+      box-sizing: border-box;
+      padding: 20px;
+    }
+    
+    @keyframes backgroundAnim {
+      0% { background: linear-gradient(to bottom right, #ffe4e1, #fff0f5); }
+      100% { background: linear-gradient(to bottom left, #fddde6, #ffecf2); }
+    }
+
+    .cat-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60vh;
+    }
+    .cat-container img {
+      max-height: 300px;
+      width: auto;
+      max-width: 90%;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .controls {
+      margin-top: 10px;
+    }
+    #cat-game-section input, #cat-game-section button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 2px solid #ff6b81;
+      margin: 5px;
+    }
+    #bubble {
+      margin: 10px auto;
+      font-size: 18px;
+      background: #fff8dc;
+      padding: 12px;
+      width: fit-content;
+      max-width: 90%;
+      border-radius: 15px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+    #letter {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 2px solid #ffb6c1;
+      padding: 20px;
+      width: 250px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: none;
+      text-align: left;
+      z-index: 200;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="bg-music.mp3" type="audio/mpeg" />
+    <source src="music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Section 1: Login Page -->
+  <section id="login-section">
+    <div class="heart-container" id="login-heart-container"></div>
+    <div class="bubble-container" id="login-bubble-container"></div>
+
+    <div class="login-box">
+      <img src="logo.jpg" alt="Logo" class="logo" />
+      <h2 class="title">💕Welcome💕</h2>
+      <a href="https://www.instagram.com/your_username" target="_blank" class="insta-link">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-icon" />
+        @saachi
+      </a>
+      <form onsubmit="return checkPassword()">
+        <input type="text" id="name" placeholder="💖name💖" required />
+        <input type="password" id="password" placeholder="💘code💘" required />
+        <button type="submit">login!</button>
+      </form>
+      <div id="countdown">
+        <p>⏳ Countdown to Birthday: <span id="timer"></span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Main Content -->
+  <section id="main-section">
+    <div class="heart-container" id="main-heart-container"></div>
+    <div class="right-panel">
+      <div class="greeting">Happy Birthday, Saachi! 💖</div>
+      <div class="custom-message">Every moment with you is magic. This is just a glimpse of how special you are to me. 💫</div>
+      <div id="card-wrapper">
+        <div class="tap-note">✨ Tap a card to see your secret message ✨</div>
+        <div class="row">
+          <div class="card" data-label="Photo 1">
+            <div class="card-inner">
+              <div class="card-front"><img src="p1.jpg" alt="Photo 1" /></div>
+              <div class="card-back">Your smile is my sunshine. 🌞</div>
+            </div>
+          </div>
+          <div class="card" data-label="Photo 2">
+            <div class="card-inner">
+              <div class="card-front"><img src="p2.jpg" alt="Photo 2" /></div>
+              <div class="card-back">Every day with you is a blessing. 💖</div>
+            </div>
+          </div>
+          <div class="card" data-label="Photo 3">
+            <div class="card-inner">
+              <div class="card-front"><img src="p3.jpg" alt="Photo 3" /></div>
+              <div class="card-back">You light up my world. ✨</div>
+            </div>
+          </div>
+        </div>
+        <div class="tap-note"></div>
+        <div class="row">
+          <div class="card" data-label="Video 1">
+            <div class="card-inner">
+              <div class="card-front"><video src="v1.mp4" muted autoplay loop playsinline></video></div>
+              <div class="card-back">A memory I’ll always treasure. 🎥</div>
+            </div>
+          </div>
+          <div class="card" data-label="Video 2">
+            <div class="card-inner">
+              <div class="card-front"><video src="v2.mp4" muted autoplay loop playsinline></video></div>
+              <div class="card-back">You + Me = Forever. 💞</div>
+            </div>
+          </div>
+          <div class="card" data-label="Video 3">
+            <div class="card-inner">
+              <div class="card-front"><video src="v3.mp4" muted autoplay loop playsinline></video></div>
+              <div class="card-back">Just look at us glow. 🔥</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="next-btn" onclick="showCatGame()">Next Surprise 🎁</button>
+    </div>
+  </section>
+
+  <!-- Section 3: Cat Game -->
+  <section id="cat-game-section">
+      <h1>🐱 Talking Cat for saachi 💖</h1>
+      <div class="cat-container">
+        <img src="cat.jpg" alt="Cute Cat" id="catImage" onclick="speakManualCatMessage()" />
+      </div>
+      <div id="bubble">Hi! I'm your talking cat! 💬</div>
+
+      <div class="controls">
+        <input type="text" id="textInput" placeholder="Type something..." onkeydown="if(event.key==='Enter'){speakTypedMessage()}" />
+        <button onclick="speakTypedMessage()">Send</button>
+        <button onclick="speakMessage()">Speak A Random Message</button>
+      </div>
+
+      <div id="letter">
+        <h3>💌 A Letter for You</h3>
+        <p>My dearest Saachi, you are the most special part of my world. Every moment with you feels like a dream come true. 💖</p>
+        <button onclick="document.getElementById('letter').style.display='none'" style="margin-top:10px;">Close</button>
+      </div>
+  </section>
+
+
+  <!-- Combined JavaScript -->
+  <script>
+    const bgMusic = document.getElementById('bg-music');
+
+    // --- Page Navigation ---
+    function checkPassword() {
+      if (document.getElementById("password").value === "1108") {
+        alert("Welcome to the surprise, Saachi! 💖");
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('main-section').style.display = 'block';
+        
+        // Try to play music after user interaction
+        bgMusic.play().catch(e => console.error("Autoplay was prevented:", e));
+        
+        initializeMainContent();
+      } else {
+        alert("Oops! Wrong love code 🥺");
+      }
+      return false; // Prevent form submission
+    }
+
+    function showCatGame() {
+        bgMusic.pause(); // Stop background music
+        document.getElementById('main-section').style.display = 'none';
+        document.getElementById('cat-game-section').style.display = 'block';
+        initializeCatGame();
+    }
+
+    // --- Initialization Functions ---
+    function initializeLogin() {
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        const loginHeartContainer = document.getElementById('login-heart-container');
+        const loginBubbleContainer = document.getElementById('login-bubble-container');
+        setInterval(() => {
+            createFloatingElement("heart", loginHeartContainer);
+            createFloatingElement("bubble", loginBubbleContainer);
+        }, 300);
+    }
+    
+    function initializeMainContent() {
+        setInterval(createMainHeart, 150);
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => card.classList.toggle('flipped'));
+        });
+    }
+
+    function initializeCatGame() {
+        loadVoices();
+        
+        const catGameSection = document.getElementById('cat-game-section');
+        let holdStart = null;
+        let holdTimer = null;
+
+        const startHold = (e) => {
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            if (clientX < window.innerWidth * 0.3) {
+                holdStart = Date.now();
+                holdTimer = setTimeout(() => {
+                     if (holdStart) { // Check if still holding
+                        document.getElementById('letter').style.display = 'block';
+                        holdStart = null;
+                     }
+                }, 5000); // 5 seconds
+            }
+        };
+
+        const endHold = () => {
+             clearTimeout(holdTimer);
+             holdStart = null;
+        };
+
+        catGameSection.addEventListener('touchstart', startHold);
+        catGameSection.addEventListener('touchend', endHold);
+        catGameSection.addEventListener('mousedown', startHold);
+        catGameSection.addEventListener('mouseup', endHold);
+        catGameSection.addEventListener('mouseleave', endHold);
+    }
+    
+    // --- Login Page Scripts ---
+    const countdownEl = document.getElementById('timer');
+    const targetDate = new Date("2025-08-11T00:00:00");
+
+    function updateCountdown() {
+      const diff = targetDate - new Date();
+      if (diff <= 0) {
+        countdownEl.innerHTML = "🎉 Happy Birthday! 🎉";
+        return;
+      }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / 1000 / 60) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+      countdownEl.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+    }
+    
+    function createFloatingElement(className, container) {
+      const el = document.createElement("div");
+      el.className = className;
+      el.style.left = `${Math.random() * 100}vw`;
+      el.style.animationDuration = `${5 + Math.random() * 5}s`;
+      container.appendChild(el);
+      setTimeout(() => el.remove(), 10000);
+    }
+
+    // --- Main Content Scripts ---
+    function createMainHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.top = `${100 + Math.random() * 10}%`; // Start from bottom
+      heart.style.animationDuration = `${3 + Math.random() * 2}s`;
+      document.getElementById('main-heart-container').appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    // --- Cat Game Scripts ---
+    let voices = [];
+    const manualMessages = [
+      "You're the sweetest person ever, Saachi!",
+      "You make me smile every day!",
+      "You're my favorite human!",
+      "Hugs and purrs just for you!",
+      "You're as cute as a kitten!"
+    ];
+    let currentMessageIndex = 0;
+
+    function loadVoices() {
+      voices = window.speechSynthesis.getVoices();
+      if(voices.length === 0) {
+          // Fallback if voices don't load immediately
+          window.speechSynthesis.onvoiceschanged = () => {
+             voices = window.speechSynthesis.getVoices();
+          };
+      }
+    }
+
+    function speak(text) {
+      if (!text || typeof SpeechSynthesisUtterance === "undefined") return;
+      speechSynthesis.cancel(); // Stop any previous speech
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.pitch = 2.2;
+      utterance.rate = 1.0;
+      const voice = voices.find(v => v.lang === 'en-US' && v.name.toLowerCase().includes('female'));
+      if (voice) utterance.voice = voice;
+      speechSynthesis.speak(utterance);
+    }
+
+    function speakMessage() {
+      const message = "I love you, meow!";
+      document.getElementById('bubble').innerText = message;
+      speak(message);
+    }
+
+    function speakTypedMessage() {
+      const input = document.getElementById('textInput');
+      const message = input.value.trim();
+      if (message) {
+        document.getElementById('bubble').innerText = message;
+        speak(message);
+        input.value = "";
+      }
+    }
+
+    function speakManualCatMessage() {
+      const message = manualMessages[currentMessageIndex];
+      document.getElementById('bubble').innerText = message;
+      speak(message);
+      currentMessageIndex = (currentMessageIndex + 1) % manualMessages.length;
+    }
+
+    // --- Start the first page ---
+    initializeLogin();
+
+  </script>
+</body>
+</html>
