@@ -1,0 +1,99 @@
+/* --- Cat Game Styles --- */
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive;
+    text-align: center;
+    overflow: hidden;
+    /* Animation is set on the main container now */
+}
+
+#cat-game-container {
+    background: linear-gradient(to bottom right, #ffe4e1, #fff0f5);
+    animation: backgroundAnim 10s ease infinite alternate;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+@keyframes backgroundAnim {
+    0% {
+        background: linear-gradient(to bottom right, #ffe4e1, #fff0f5);
+    }
+    100% {
+        background: linear-gradient(to bottom left, #fddde6, #ffecf2);
+    }
+}
+
+.cat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Allows the container to take up available space */
+}
+
+.cat-container img {
+    max-height: 300px;
+    width: auto;
+    max-width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.controls {
+    margin-top: 10px;
+    padding-bottom: 20px; /* Add some space at the bottom */
+}
+
+input, button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #ff6b81;
+    margin: 5px;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+button {
+    cursor: pointer;
+    background-color: #ffdde1;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ffc1cb;
+}
+
+#bubble {
+    margin: 10px auto;
+    font-size: 18px;
+    background: #fff8dc;
+    padding: 12px;
+    width: fit-content;
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+#letter {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 2px solid #ffb6c1;
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: none; /* Hidden by default */
+    text-align: left;
+    z-index: 200;
+}
+
+#letter button {
+    margin-top: 10px;
+}

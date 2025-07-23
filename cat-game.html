@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talking Cat</title>
+  
+  <!-- Link to the CSS file -->
+  <link rel="stylesheet" href="cat-game.css">
+  
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="cat-game-container">
+      <h1>🐱 Talking Cat fr u.Tap on the cat 💖</h1>
+      
+      <div class="cat-container">
+        <!-- Make sure cat.jpg is in the same folder -->
+        <img src="cat.jpg" alt="Cute Cat" id="catImage" />
+      </div>
+      
+      <div id="bubble">Hi! I'm your talking cat! 💬</div>
+
+      <div class="controls">
+        <input type="text" id="textInput" placeholder="Type something..." />
+        <button id="sendButton">Send</button>
+        <button id="manualMessageButton">Speak a Random Message</button>
+      </div>
+  </div>
+
+  <div id="letter">
+    <h3>💌 A Letter for You</h3>
+    <p>My dearest Saachi, you are the most special part of my world. Every moment with you feels like a dream come true. 💖</p>
+    <button id="closeLetterButton">Close</button>
+  </div>
+
+  <!-- Link to the JavaScript file -->
+  <script src="cat-game.js"></script>
+</body>
+</html>
