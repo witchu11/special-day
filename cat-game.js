@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Updated messages to sound more cat-like
     const manualMessages = [
        "happy birthday, enjoy your day with joy my idiot!",
-      "You're the sweetest person ever, my idiot!",
+      "You're the sweetest person ever!",
       "You're photos make me smile every day!",
       "You're as cute as a kitten!",
       "keep smiling, keep achiving, keep shining!",
