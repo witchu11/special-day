@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "dont be sad, iam here to make u smile!",
       "dont easyly trust someone, be strong in life and keep going dont feel for anything",
       "if the destine is with us, we will ....",
-      "i miss u, waiting for the day we meet again!",
-      "still loving, still caring, still waiting....",
+      "waiting for the day we meet again!",
+      "still loving, still caring....",
     ];
     let currentMessageIndex = 0;
     let holdStart = null;
