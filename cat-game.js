@@ -19,18 +19,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Updated messages to sound more cat-like
     const manualMessages = [
        "happy birthday, enjoy your day with joy my idiot!",
-      "You're the sweetest person ever!",
+      "You're the prettiest person ever, saachi!",
       "You're photos make me smile every day!",
-      "You're as cute as a kitten!",
-      "keep smiling, keep achiving, keep shining!",
-      "your smile will make my day!",
-      "iam here for u at any time ",
-      "dont worry, iam always with u!",
+      "You're cute as a kitten!",
+      "It is in my nature to go away far from you, wandering around and making sense of life. But I hope you know that I do care for you.!",
+      "I need you to know that no matter what happens, it was worth it to me. Being with you, loving you. It was all worth it!",
+      "u had the most beautiful thing that I had ever seen And only your laugh to realize that beauty was the least of u ",
+      "i could watch your photo for a single minute and find a thousand things that i love about you!",
       "dont be sad, iam here to make u smile!",
-      "dont easyly trust someone, be strong in life and keep going dont feel for anything",
+      "I keep myself busy with the things I do, But every time I pause, I still think of you",
       "if the destine is with us, we will ....",
+      "My heart wont let you go, and I need you to know, I miss you.",
       "waiting for the day we meet again!",
-      "still loving, still caring....",
+      "Lying next to you or three hundred miles away, I am yours just the same.",
+      "We loved with a love that was more than love",
+      "You dont need a love scene to show love.",
     ];
     let currentMessageIndex = 0;
     let holdStart = null;
