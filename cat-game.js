@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "waiting for the day we meet again!",
       "Lying next to you or three hundred miles away, I am yours just the same.",
       "We loved with a love that was more than love",
-      "You dont need a love scene to show love.",
+      "we dont need a love scene to show love.",
     ];
     let currentMessageIndex = 0;
     let holdStart = null;
