@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let voices = [];
     // Updated messages to sound more cat-like
     const manualMessages = [
-       "happy birthday, enjoy your day with joy my idiot!",
+       "happy birthday, enjoy your day with joy, idiot!",
       "You're the prettiest person ever, saachi!",
       "You're photos make me smile every day!",
       "You're cute as a kitten!",
